@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "motion/react";
@@ -46,31 +47,14 @@ const photos = [
   },
 ];
 
-const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 70,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
 export default function Home() {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
   return (
     <main>
-
       {/* ================= HERO ================= */}
 
       <section className="hero">
-
         <motion.div
           className="hero-content"
           initial={{ opacity: 0, y: 40 }}
@@ -80,7 +64,6 @@ export default function Home() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-
           <motion.p
             className="eyebrow"
             initial={{ opacity: 0 }}
@@ -129,16 +112,11 @@ export default function Home() {
               delay: 1.1,
               duration: 0.8,
             }}
-            whileHover={{
-              scale: 1.05,
-            }}
-            whileTap={{
-              scale: 0.95,
-            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             scroll to memories ↓
           </motion.a>
-
         </motion.div>
 
         <motion.div
@@ -164,29 +142,26 @@ export default function Home() {
         >
           ♡
         </motion.div>
-
       </section>
-
 
       {/* ================= INTRO ================= */}
 
       <section className="intro">
-
         <motion.p
           className="small-title"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.9 }}
         >
           01 — memories
         </motion.p>
 
         <motion.h2
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, delay: 0.1 }}
         >
           maybe they're just photos,
           <br />
@@ -195,82 +170,65 @@ export default function Home() {
 
         <motion.p
           className="intro-text"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
         >
           Some pictures are just pictures.
+          <br />
           Some somehow become little pieces
+          <br />
           of a person, a place, or a moment
+          <br />
           we wish we could live again.
         </motion.p>
-
       </section>
-
 
       {/* ================= GALLERY ================= */}
 
       <section className="gallery-section" id="gallery">
-
         <motion.div
           className="section-heading"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9 }}
         >
-
           <div>
-            <p className="small-title">
-              02 — the gallery
-            </p>
+            <p className="small-title">02 — the gallery</p>
 
-            <h2>
-              little things i kept
-            </h2>
+            <h2>little things i kept</h2>
           </div>
 
-          <span className="photo-count">
-            08 memories
-          </span>
-
+          <span className="photo-count">08 memories</span>
         </motion.div>
 
-
         <div className="gallery">
-
           {photos.map((photo, index) => (
-
             <motion.div
               key={photo.src}
               className={`photo-card photo-${index + 1}`}
-
               initial={{
                 opacity: 0,
                 y: 100,
                 rotate: photo.rotate,
                 scale: 0.92,
               }}
-
               whileInView={{
                 opacity: 1,
                 y: 0,
                 rotate: photo.rotate,
                 scale: 1,
               }}
-
               viewport={{
                 once: true,
                 amount: 0.25,
               }}
-
               transition={{
                 duration: 1,
                 delay: index * 0.08,
-                ease: [0.22, 1, 0.36, 1],
               }}
-
               whileHover={{
                 y: -15,
                 rotate: 0,
@@ -279,46 +237,28 @@ export default function Home() {
                   duration: 0.4,
                 },
               }}
-
-              onClick={() =>
-                setSelectedPhoto(photo.src)
-              }
+              onClick={() => setSelectedPhoto(photo.src)}
             >
-
               <div className="photo-wrapper">
-
                 <img
                   src={photo.src}
                   alt={`Memory ${index + 1}`}
                 />
-
               </div>
 
               <div className="photo-caption">
+                <span>0{index + 1}</span>
 
-                <span>
-                  0{index + 1}
-                </span>
-
-                <p>
-                  {photo.caption}
-                </p>
-
+                <p>{photo.caption}</p>
               </div>
-
             </motion.div>
-
           ))}
-
         </div>
-
       </section>
-
 
       {/* ================= QUOTE ================= */}
 
       <section className="quote-section">
-
         <motion.p
           className="quote-mark"
           initial={{
@@ -340,12 +280,14 @@ export default function Home() {
         </motion.p>
 
         <motion.h2
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
             amount: 0.4,
+          }}
+          transition={{
+            duration: 0.9,
           }}
         >
           i don't need a perfect
@@ -357,41 +299,44 @@ export default function Home() {
 
         <motion.p
           className="quote-author"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
+          }}
+          transition={{
+            duration: 0.9,
+            delay: 0.15,
           }}
         >
           — somewhere between then & now
         </motion.p>
-
       </section>
-
 
       {/* ================= LITTLE THINGS ================= */}
 
       <section className="things-section">
-
         <motion.p
           className="small-title"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
           }}
+          transition={{ duration: 0.9 }}
         >
           03 — little things
         </motion.p>
 
         <motion.h2
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
+          }}
+          transition={{
+            duration: 0.9,
+            delay: 0.1,
           }}
         >
           things i secretly
@@ -399,9 +344,7 @@ export default function Home() {
           <i>love about you.</i>
         </motion.h2>
 
-
         <div className="things-grid">
-
           {[
             {
               title: "the way you listen",
@@ -420,75 +363,60 @@ export default function Home() {
               text: "honestly, i don't think this one needs an explanation.",
             },
           ].map((thing, index) => (
-
             <motion.div
               className="thing"
               key={thing.title}
-
               initial={{
                 opacity: 0,
                 y: 60,
               }}
-
               whileInView={{
                 opacity: 1,
                 y: 0,
               }}
-
               viewport={{
                 once: true,
                 amount: 0.3,
               }}
-
               transition={{
                 duration: 0.8,
                 delay: index * 0.12,
               }}
             >
+              <span>0{index + 1}</span>
 
-              <span>
-                0{index + 1}
-              </span>
+              <h3>{thing.title}</h3>
 
-              <h3>
-                {thing.title}
-              </h3>
-
-              <p>
-                {thing.text}
-              </p>
-
+              <p>{thing.text}</p>
             </motion.div>
-
           ))}
-
         </div>
-
       </section>
-
 
       {/* ================= ENDING ================= */}
 
       <section className="ending">
-
         <motion.p
           className="small-title"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
           }}
+          transition={{ duration: 0.9 }}
         >
           04 — end of the gallery
         </motion.p>
 
         <motion.h2
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
+          }}
+          transition={{
+            duration: 0.9,
+            delay: 0.1,
           }}
         >
           maybe we'll make
@@ -497,11 +425,14 @@ export default function Home() {
         </motion.h2>
 
         <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
+          }}
+          transition={{
+            duration: 0.9,
+            delay: 0.2,
           }}
         >
           until then, i'll keep these ones here.
@@ -520,70 +451,44 @@ export default function Home() {
         >
           ♡
         </motion.div>
-
       </section>
-
 
       {/* ================= LIGHTBOX ================= */}
 
       {selectedPhoto && (
-
         <motion.div
           className="lightbox"
-
-          initial={{
-            opacity: 0,
-          }}
-
-          animate={{
-            opacity: 1,
-          }}
-
-          exit={{
-            opacity: 0,
-          }}
-
-          onClick={() =>
-            setSelectedPhoto(null)
-          }
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedPhoto(null)}
         >
-
           <motion.img
             src={selectedPhoto}
             alt="Selected memory"
-
             initial={{
               opacity: 0,
               scale: 0.8,
             }}
-
             animate={{
               opacity: 1,
               scale: 1,
             }}
-
             transition={{
               duration: 0.5,
             }}
-
-            onClick={(e) =>
-              e.stopPropagation()
-            }
+            onClick={(e) => e.stopPropagation()}
           />
 
           <button
             className="close-button"
-            onClick={() =>
-              setSelectedPhoto(null)
-            }
+            onClick={() => setSelectedPhoto(null)}
           >
             ×
           </button>
-
         </motion.div>
-
       )}
-
     </main>
   );
 }
+
